@@ -9,6 +9,14 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+# The rest
+.idea/**/checkstyle-idea.xml
+.idea/**/compiler.xml
+.idea/**/encodings.xml
+.idea/**/jarRepositories.xml
+.idea/**/misc.xml
+.idea/**/vcs.xml
+
 # AWS User-specific
 .idea/**/aws.xml
 
