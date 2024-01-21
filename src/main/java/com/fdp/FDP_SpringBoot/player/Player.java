@@ -11,13 +11,13 @@ public class Player {
     @Column(name = "player_id")
     private Integer playerId;
 
-    @Column(name = "first_name", length = 255)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", length = 255)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "name", length = 255)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "last_season")
@@ -26,29 +26,29 @@ public class Player {
     @Column(name = "current_club_id")
     private Integer currentClubId;
 
-    @Column(name = "player_code", length = 255)
+    @Column(name = "player_code")
     private String playerCode;
 
-    @Column(name = "country_of_birth", length = 255)
+    @Column(name = "country_of_birth")
     private String countryOfBirth;
 
-    @Column(name = "city_of_birth", length = 255)
+    @Column(name = "city_of_birth")
     private String cityOfBirth;
 
-    @Column(name = "country_of_citizenship", length = 255)
+    @Column(name = "country_of_citizenship")
     private String countryOfCitizenship;
 
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
 
-    @Column(name = "sub_position", length = 255)
+    @Column(name = "sub_position")
     private String subPosition;
 
-    @Column(name = "position", length = 255)
+    @Column(name = "position")
     private String position;
 
-    @Column(name = "foot", length = 255)
+    @Column(name = "foot")
     private String foot;
 
     @Column(name = "height_in_cm")
@@ -64,7 +64,7 @@ public class Player {
     @Temporal(TemporalType.DATE)
     private Date contractExpirationDate;
 
-    @Column(name = "agent_name", length = 255)
+    @Column(name = "agent_name")
     private String agentName;
 
     @Column(name = "image_url", columnDefinition = "TEXT")
@@ -73,10 +73,10 @@ public class Player {
     @Column(name = "url", columnDefinition = "TEXT")
     private String url;
 
-    @Column(name = "current_club_domestic_competition_id", length = 255)
+    @Column(name = "current_club_domestic_competition_id")
     private String currentClubDomesticCompetitionId;
 
-    @Column(name = "current_club_name", length = 255)
+    @Column(name = "current_club_name")
     private String currentClubName;
 
     @Column(name = "age")
