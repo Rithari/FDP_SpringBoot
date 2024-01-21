@@ -10,9 +10,11 @@ import java.util.Optional;
 @Repository
 public interface CompetitionRepository extends JpaRepository<Competition, String> {
 
-    @Query("SELECT c, COUNT(cl) FROM Competition c LEFT JOIN c.clubs cl GROUP BY c")
-    List<Object[]> findAllCompetitionsWithClubCount();
+    @Query("SELECT c, COUNT(cl), SUM(cl.squadSize) FROM Competition c LEFT JOIN c.clubs cl GROUP BY c")
+    List<Object[]> findAllWithStats();
 
-    @Query("SELECT c, COUNT(cl) FROM Competition c LEFT JOIN c.clubs cl WHERE c.competitionId = :competitionId GROUP BY c")
-    Optional<Object[]> findCompetitionWithClubCountById(String competitionId);
+
+    @Query("SELECT c, COUNT(cl), SUM(cl.squadSize) FROM Competition c LEFT JOIN c.clubs cl WHERE c.competitionId = :competitionId GROUP BY c")
+    Optional<Object[]> findByIdWithStats(String competitionId);
+
 }

@@ -1,10 +1,12 @@
 package com.fdp.FDP_SpringBoot.competition;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/competitions")
@@ -21,8 +23,10 @@ public class CompetitionController {
 
     @GetMapping("/{competitionId}")
     public ResponseEntity<CompetitionDetailsDto> getCompetitionById(@PathVariable String competitionId) {
-        return competitionService.getCompetitionById(competitionId)
+        Optional<CompetitionDetailsDto> competitionDto = competitionService.getCompetitionById(competitionId);
+        return competitionDto
                 .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
 }

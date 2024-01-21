@@ -1,9 +1,10 @@
 package com.fdp.FDP_SpringBoot.competition;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fdp.FDP_SpringBoot.club.Club;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "competitions")
@@ -15,6 +16,10 @@ public class Competition {
 
     @Column(name = "competition_code")
     private String competitionCode;
+
+    @OneToMany(mappedBy = "domesticCompetition")
+    @JsonManagedReference
+    private Set<Club> clubs;
 
     @Column(name = "name")
     private String name;
@@ -57,6 +62,14 @@ public class Competition {
 
     public void setCompetitionCode(String competitionCode) {
         this.competitionCode = competitionCode;
+    }
+
+    public Set<Club> getClubs() {
+        return clubs;
+    }
+
+    public void setClubs(Set<Club> clubs) {
+        this.clubs = clubs;
     }
 
     public String getName() {
