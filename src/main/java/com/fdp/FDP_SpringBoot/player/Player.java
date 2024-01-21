@@ -1,5 +1,6 @@
 package com.fdp.FDP_SpringBoot.player;
 
+import com.fdp.FDP_SpringBoot.club.Club;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -25,6 +26,11 @@ public class Player {
 
     @Column(name = "current_club_id")
     private Integer currentClubId;
+
+    @ManyToOne
+    @JoinColumn(name = "current_club_id", referencedColumnName = "club_id", insertable = false, updatable = false)
+    private Club currentClub;
+
 
     @Column(name = "player_code")
     private String playerCode;
@@ -85,6 +91,13 @@ public class Player {
     public Player() {
     }
 
+    public Club getCurrentClub() {
+        return currentClub;
+    }
+
+    public void setCurrentClub(Club currentClub) {
+        this.currentClub = currentClub;
+    }
 
     public Integer getPlayerId() {
         return playerId;
