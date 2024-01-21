@@ -16,6 +16,8 @@
 .idea/**/jarRepositories.xml
 .idea/**/misc.xml
 .idea/**/vcs.xml
+.idea/**/dataSources.xml
+.idea/**/modules.xml
 
 # AWS User-specific
 .idea/**/aws.xml
@@ -202,5 +204,8 @@ gradle-app.setting
 ### Gradle Patch ###
 # Java heap dump
 *.hprof
+
+**/env.properties
+
 
 # End of https://www.toptal.com/developers/gitignore/api/gradle,intellij,java,macos
