@@ -1,5 +1,6 @@
 package com.fdp.FDP_SpringBoot.player;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fdp.FDP_SpringBoot.club.Club;
 import jakarta.persistence.*;
 import java.util.Date;
@@ -28,6 +29,7 @@ public class Player {
     private Integer currentClubId;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "current_club_id", referencedColumnName = "club_id", insertable = false, updatable = false)
     private Club currentClub;
 

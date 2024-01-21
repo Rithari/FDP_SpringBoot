@@ -1,5 +1,6 @@
 package com.fdp.FDP_SpringBoot.club;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fdp.FDP_SpringBoot.competition.Competition;
 import jakarta.persistence.*;
 import java.util.Set;
@@ -20,6 +21,7 @@ public class Club {
 
     @ManyToOne
     @JoinColumn(name = "domestic_competition_id")
+    @JsonBackReference
     private Competition domesticCompetition;
 
     @Column(name = "squad_size")
@@ -52,7 +54,6 @@ public class Club {
     @Column(name = "url", columnDefinition = "TEXT")
     private String url;
 
-    // Getters and setters for all fields
 
     // Constructors
     public Club() {
