@@ -24,4 +24,9 @@ public class ClubServiceImpl implements ClubService {
     public Optional<Club> getClubById(Integer clubId) {
         return clubRepository.findById(clubId);
     }
+
+    @Override
+    public List<Club> getClubsByCompetitionId(String competitionId) {
+        return clubRepository.findByDomesticCompetition_CompetitionId(competitionId);
+    }
 }

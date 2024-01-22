@@ -29,4 +29,10 @@ public class ClubController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/competition/{competitionId}")
+    public ResponseEntity<List<Club>> getClubsByCompetitionId(@PathVariable String competitionId) {
+        List<Club> clubs = clubService.getClubsByCompetitionId(competitionId);
+        return ResponseEntity.ok(clubs);
+    }
 }

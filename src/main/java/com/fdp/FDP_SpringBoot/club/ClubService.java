@@ -6,4 +6,6 @@ import java.util.Optional;
 public interface ClubService {
     List<Club> getAllClubs();
     Optional<Club> getClubById(Integer clubId);
+
+    List<Club> getClubsByCompetitionId(String competitionId);
 }
