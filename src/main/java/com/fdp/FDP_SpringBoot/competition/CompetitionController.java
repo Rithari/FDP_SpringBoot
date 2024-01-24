@@ -29,4 +29,15 @@ public class CompetitionController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
+
+    @GetMapping("/{competitionId}/statistics")
+    public ResponseEntity<CompetitionStatisticsDto> getCompetitionStatistics(@PathVariable String competitionId) {
+        CompetitionStatisticsDto clubStatistics = competitionService.getClubStatisticsByCompetitionId(competitionId);
+        if (clubStatistics != null) {
+            return ResponseEntity.ok(clubStatistics);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

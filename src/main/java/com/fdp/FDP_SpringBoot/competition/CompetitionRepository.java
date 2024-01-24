@@ -25,4 +25,17 @@ public interface CompetitionRepository extends JpaRepository<Competition, String
             "WHERE c.competitionId = :competitionId " +
             "GROUP BY c")
     Optional<Object[]> findByIdWithStats(String competitionId);
+
+    @Query("SELECT new com.fdp.FDP_SpringBoot.competition.CompetitionStatisticsDto(" +
+            "c.domesticCompetition.competitionId, " +
+            "AVG(nullif(c.averageAge, 'NaN')), " +
+            "AVG(nullif(c.foreignersPercentage, 'NaN')), " +
+            "(SELECT AVG(p.marketValueInEur) FROM Player p WHERE p.currentClub.domesticCompetition.competitionId = c.domesticCompetition.competitionId), " +
+            "SUM(c.foreignersNumber)" +
+            ") " +
+            "FROM Club c " +
+            "WHERE c.domesticCompetition.competitionId = :competitionId " +
+            "GROUP BY c.domesticCompetition.competitionId")
+    CompetitionStatisticsDto findClubStatisticsByCompetitionId(String competitionId);
+
 }

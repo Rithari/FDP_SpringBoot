@@ -10,5 +10,7 @@ import java.util.stream.Collectors;
 public interface CompetitionService {
     List<CompetitionDetailsDto> getAllCompetitions();
     Optional<CompetitionDetailsDto> getCompetitionById(String competitionId);
+
+    CompetitionStatisticsDto getClubStatisticsByCompetitionId(String competitionId);
 }
 

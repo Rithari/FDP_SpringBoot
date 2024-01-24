@@ -24,15 +24,18 @@ public class CompetitionServiceImpl implements CompetitionService {
 
     @Override
     public Optional<CompetitionDetailsDto> getCompetitionById(String competitionId) {
-        System.out.println("Service: Finding competition with ID: " + competitionId);
         Optional<Object[]> result = competitionRepository.findByIdWithStats(competitionId);
         if (result.isEmpty()) {
-            System.out.println("Service: No competition found for ID: " + competitionId);
             return Optional.empty();
         }
-        System.out.println("Service: Found competition, converting to DTO");
         return result.map(this::convertToDtoForSingleCompetition);
     }
+
+    @Override
+    public CompetitionStatisticsDto getClubStatisticsByCompetitionId(String competitionId) {
+        return competitionRepository.findClubStatisticsByCompetitionId(competitionId);
+    }
+
 
     private CompetitionDetailsDto convertToDto(Object[] objects) {
         if (objects != null && objects.length >= 4 && objects[0] instanceof Competition competition) {
