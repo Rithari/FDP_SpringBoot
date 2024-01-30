@@ -1,5 +1,6 @@
 package com.fdp.FDP_SpringBoot.club;
 
+import com.fdp.FDP_SpringBoot.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +35,11 @@ public class ClubController {
     public ResponseEntity<List<Club>> getClubsByCompetitionId(@PathVariable String competitionId) {
         List<Club> clubs = clubService.getClubsByCompetitionId(competitionId);
         return ResponseEntity.ok(clubs);
+    }
+
+    @GetMapping("/{clubId}/players")
+    public ResponseEntity<List<Player>> getPlayersByClubId(@PathVariable Integer clubId) {
+        List<Player> players = clubService.getPlayersByClubId(clubId);
+        return ResponseEntity.ok(players);
     }
 }
