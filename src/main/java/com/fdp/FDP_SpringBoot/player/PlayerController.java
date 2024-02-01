@@ -10,14 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * REST controller for handling player-related requests.
+ * Maps to the '/players' route.
+ */
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
 
+    // Service layer that handles business logic related to players.
     @Autowired
     private PlayerService playerService;
 
-    // Get a single player by ID
+    /**
+     * Endpoint for retrieving a single player by their ID.
+     *
+     * @param playerId The ID of the player to be retrieved.
+     * @return ResponseEntity with the player data if found, or a 404 status if not found.
+     */
     @GetMapping("/{playerId}")
     public ResponseEntity<?> getPlayerById(@PathVariable Integer playerId) {
         Optional<Player> playerOpt = playerService.getPlayerById(playerId);
@@ -28,7 +38,11 @@ public class PlayerController {
         }
     }
 
-    // Get all players
+    /**
+     * Endpoint for retrieving all players.
+     *
+     * @return ResponseEntity with a list of all players.
+     */
     @GetMapping
     public ResponseEntity<List<Player>> getAllPlayers() {
         List<Player> players = playerService.getAllPlayers();
